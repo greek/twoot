@@ -22,15 +22,15 @@ def startup():
     if selector == "tweet":
         tweet()
     if selector == "loop":
-        tweetLoop()
+        tweet_loop()
     if selector == "to":
-        tweetTo()
+        tweet_to()
     if selector == "many":
-        replyToAsManyAsPossible()
+        reply_to_as_many_as_possible()
     if selector == "latest":
-        replyToLatest()
+        reply_to_latest()
 
-@decorators.toStartup
+@decorators.to_startup
 def tweet():
     phrase = input("Say... ")
     try:
@@ -39,7 +39,7 @@ def tweet():
     except:
         print("The status is a dupe, try again.")
 
-def tweetLoop():
+def tweet_loop():
     phrase = input("Say... ")
 
     while True:
@@ -47,8 +47,8 @@ def tweetLoop():
       print(f"tweeted {phrase}")
       time.sleep(60) # 1 min timer
 
-@decorators.toStartup
-def tweetTo():
+@decorators.to_startup
+def tweet_to():
     print("whats the handle?")
     handle = input()
 
@@ -68,8 +68,8 @@ def tweetTo():
     api.update_status("@{} ".format(handle) + phrase)
     print("Posted! Check your replies")
 
-@decorators.toStartup
-def tweetToLatest():
+@decorators.to_startup
+def tweet_to_latest():
     print("whats the handle?")
     handle = input()
 
@@ -89,8 +89,8 @@ def tweetToLatest():
     tweet0 = tweets[0]
     api.update_status("@{}".format(handle) + " {}".format(phrase), tweet0.id)
 
-@decorators.toStartup
-def replyToLatest():
+@decorators.to_startup
+def reply_to_latest():
     handle = input("Listen to... ")
     phrase = input("Say... ")
 
@@ -101,8 +101,8 @@ def replyToLatest():
         print("This will reply \"{}\" every three hours on the most latest tweet.".format(phrase))
         time.sleep(1080020) # Sleep for 3 hours to prevent ratelimiting.
 
-@decorators.toStartup
-def replyToAsManyAsPossible():
+@decorators.to_startup
+def reply_to_as_many_as_possible():
     handle = input("Listen to... ")
     phrase = input("Say... ")
 

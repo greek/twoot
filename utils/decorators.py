@@ -1,6 +1,6 @@
 from index import startup
 
-def toStartup(func):
+def to_startup(func):
     def decorator(*args, **kwargs):
         func(*args, **kwargs)
     
